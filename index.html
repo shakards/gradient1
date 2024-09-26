@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Gradient Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .example {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .cap {
+            width: 200px;
+            height: 100px;
+            background-image: linear-gradient(to right, red, yellow);
+            margin-top: 10px;
+        }
+
+        .try-it-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .editor-btn {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .code-editor {
+            display: none;
+            width: 45%;
+        }
+
+        .output {
+            width: 45%;
+            height: 100px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="example">
+        <h2>Direction - Left to Right</h2>
+        <p>The following example shows a linear gradient that starts from the left. It starts red, transitioning to yellow:</p>
+        <pre><code>.cap {
+    background-image: linear-gradient(to right, red, yellow);
+}</code></pre>
+        <div class="cap"></div>
+    </div>
+
+    <div class="try-it-container">
+        <button class="editor-btn" onclick="openEditor()">Try It</button>
+    </div>
+
+    <div id="editor-section" class="try-it-container" style="display: none;">
+        <textarea id="code-editor" class="code-editor">
+.cap {
+    width: 200px;
+    height: 100px;
+    background-image: linear-gradient(to right, red, yellow);
+}
+        </textarea>
+        <div class="output" id="live-output"></div>
+    </div>
+
+    <script>
+        function openEditor() {
+            document.getElementById('editor-section').style.display = 'flex';
+
+            const codeEditor = document.getElementById('code-editor');
+            const output = document.getElementById('live-output');
+
+            // Function to update the live preview
+            function updateOutput() {
+                output.innerHTML = '<div style="' + codeEditor.value + '"></div>';
+            }
+
+            // Initial render
+            updateOutput();
+
+            // Update on change
+            codeEditor.addEventListener('input', updateOutput);
+        }
+    </script>
+
+</body>
+</html>
